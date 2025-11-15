@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sms-deployment
+  namespace: sms-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sms
+  template:
+    metadata:
+      labels:
+        app: sms
+    spec:
+      containers:
+        - name: sms-app
+          image: shivanipathak9/sms-app:latest
+
+          ports:
+            - containerPort: 8100
